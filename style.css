@@ -1,199 +1,67 @@
-/* Variables */
-:root {
-  --primary: #28a745;
-  --primary-dark: #218838;
-  --accent: #007bff;
-  --accent-dark: #0056b3;
-  --bg-light: #f5f7fa;
-  --text-dark: #333;
-  --card-bg: #ffffff;
-  --border: #ddd;
-}
-
-/* Reset & Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-header {
-  background: var(--text-dark);
-  color: var(--card-bg);
-  text-align: center;
-  padding: 2rem 1rem;
-  animation: fadeInDown 0.8s ease both;
-}
-header h1 {
-  font-size: 2.5rem;
-  letter-spacing: 1px;
-}
-header p {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-}
-
-/* Layout */
-main {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2rem;
-  padding: 2rem;
-}
-#products {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-#cart {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  animation: slideInRight 0.6s ease both;
-}
-#cart h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-#cart ul {
-  list-style: none;
-  max-height: 300px;
-  overflow-y: auto;
-  margin-bottom: 1rem;
-}
-#cart li {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.6rem;
-  align-items: center;
-}
-#cart li button {
-  background: #dc3545;
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  border-radius: 4px;
-}
-#cart p {
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-#checkout {
-  width: 100%;
-  background: var(--accent);
-  margin-top: 0.5rem;
-}
-
-/* Productkaart */
-.product {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 0.6s ease both;
-}
+/* Product hover: kikker-sprongetje */
 .product:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.product-img-wrapper {
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 0.8rem;
-}
-.product img {
-  width: 100%;
-  height: 160px;
-  object-fit: contain;
-  transition: transform 0.4s ease;
-  cursor: pointer;
-}
-.product img:hover {
-  transform: scale(1.1);
-}
-.product h2 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-}
-.price {
-  font-size: 1rem;
-  margin-bottom: 0.8rem;
-  color: var(--primary-dark);
-}
-button.add-to-cart {
-  background: var(--primary);
-}
-button.add-to-cart:hover {
-  background: var(--primary-dark);
-  animation: pulse 0.6s ease infinite;
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: bounce 0.6s ease;
 }
 
-/* Quick View */
-#quick-view {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.5s ease both;
-  z-index: 1000;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
 }
-#quick-view-content {
+
+/* Knop ripple-effect */
+button {
   position: relative;
-  max-width: 80%;
-  max-height: 80%;
+  overflow: hidden;
 }
-#quick-view img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-#close-quick-view {
+button::after {
+  content: "";
   position: absolute;
-  top: -1rem; right: -1rem;
-  font-size: 2.5rem;
-  color: #fff;
-  cursor: pointer;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  width: 100px;
+  height: 100px;
+  opacity: 0;
+  pointer-events: none;
+}
+button:active::after {
+  transform: scale(2);
+  opacity: 1;
+  transition: transform 0.5s, opacity 1s;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Cart pulse bij update */
+#cart.updated {
+  animation: pulseCart 0.6s ease;
 }
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes pulse {
+@keyframes pulseCart {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  main { grid-template-columns: 1fr; }
-  #cart { order: -1; }
+/* Header deinend effect */
+header h1 {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Quick View zoom-in */
+#quick-view {
+  animation: fadeIn 0.4s ease;
+}
+#quick-view img {
+  animation: zoomIn 0.4s ease;
+}
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
