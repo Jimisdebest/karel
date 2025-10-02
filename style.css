@@ -14,13 +14,12 @@ header {
   text-align: center;
 }
 
-/* Productcontainer */
-.container {
+/* Producten grid */
+#products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
   padding: 40px 20px;
-  justify-content: center;
 }
 
 /* Productkaart */
@@ -31,11 +30,11 @@ header {
   padding: 15px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .product:hover {
-  transform: scale(1.02);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 
 /* Productafbeelding */
@@ -57,8 +56,8 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95em;
+  transition: background 0.2s ease;
 }
-
 button:hover {
   background: #218838;
 }
@@ -72,35 +71,29 @@ button:hover {
   border: 1px solid #ddd;
   max-width: 600px;
 }
-
 #cart h2 {
   margin-bottom: 15px;
 }
-
 #cart ul {
   list-style: none;
   padding: 0;
 }
-
 #cart li {
   margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 #cart li button {
   background: #dc3545;
   padding: 5px 10px;
   font-size: 0.8em;
   border-radius: 4px;
 }
-
 #checkout {
   margin-top: 15px;
   background: #007bff;
 }
-
 #checkout:hover {
   background: #0056b3;
 }
@@ -108,27 +101,22 @@ button:hover {
 /* Quick View */
 #quick-view {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.9);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 999;
 }
-
-#quick-img {
+#quick-view img {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
 }
-
-#close-btn {
+#close-quick-view {
   position: absolute;
-  top: 30px;
-  right: 40px;
+  top: 30px; right: 40px;
   font-size: 40px;
   color: white;
   cursor: pointer;
