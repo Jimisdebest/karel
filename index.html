@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Karel Shop</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -17,91 +17,91 @@
     <!-- Producten -->
     <section id="products">
       <div class="product" data-name="Joggingbroek" data-price="24.99" data-img="Joggingbroek.png">
-        <img src="Joggingbroek.png" alt="Joggingbroek">
+        <img src="Joggingbroek.png" alt="Joggingbroek" />
         <h2>Joggingbroek</h2>
         <p class="price">€24,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Nintendo" data-price="299.99" data-img="KarelNintendo.png">
-        <img src="KarelNintendo.png" alt="Karel Nintendo">
+        <img src="KarelNintendo.png" alt="Karel Nintendo" />
         <h2>Karel Nintendo</h2>
         <p class="price">€299,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Tesla White" data-price="89999.00" data-img="KarelTeslaWhite.png">
-        <img src="KarelTeslaWhite.png" alt="Karel Tesla White">
+        <img src="KarelTeslaWhite.png" alt="Karel Tesla White" />
         <h2>Karel Tesla White</h2>
         <p class="price">€89.999,00</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Xbox" data-price="349.99" data-img="KarelXbox.png">
-        <img src="KarelXbox.png" alt="Karel Xbox">
+        <img src="KarelXbox.png" alt="Karel Xbox" />
         <h2>Karel Xbox</h2>
         <p class="price">€349,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Park" data-price="9000000.00" data-img="Karelpark.png">
-        <img src="Karelpark.png" alt="Karel Park">
+        <img src="Karelpark.png" alt="Karel Park" />
         <h2>Karel Park</h2>
         <p class="price">€9.000.000,00</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Park Eng" data-price="10000000.00" data-img="Karelparkeng.png">
-        <img src="Karelparkeng.png" alt="Karel Park Eng">
+        <img src="Karelparkeng.png" alt="Karel Park Eng" />
         <h2>Karel Park Eng</h2>
         <p class="price">€10.000.000,00</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Kikker Achtbaan" data-price="100000.00" data-img="Kikkerachtbaan.png">
-        <img src="Kikkerachtbaan.png" alt="Kikker Achtbaan">
+        <img src="Kikkerachtbaan.png" alt="Kikker Achtbaan" />
         <h2>Kikker Achtbaan</h2>
         <p class="price">€100.000,00</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Pet" data-price="14.99" data-img="Pet.png">
-        <img src="Pet.png" alt="Karel Pet">
+        <img src="Pet.png" alt="Karel Pet" />
         <h2>Karel Pet</h2>
         <p class="price">€14,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Rugzak" data-price="39.99" data-img="Rugzak.png">
-        <img src="Rugzak.png" alt="Karel Rugzak">
+        <img src="Rugzak.png" alt="Karel Rugzak" />
         <h2>Karel Rugzak</h2>
         <p class="price">€39,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Sokken" data-price="9.99" data-img="Sokken.png">
-        <img src="Sokken.png" alt="Karel Sokken">
+        <img src="Sokken.png" alt="Karel Sokken" />
         <h2>Karel Sokken</h2>
         <p class="price">€9,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Stickers" data-price="4.99" data-img="Stickers.png">
-        <img src="Stickers.png" alt="Karel Stickers">
+        <img src="Stickers.png" alt="Karel Stickers" />
         <h2>Karel Stickers</h2>
         <p class="price">€4,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel Trui" data-price="29.99" data-img="Trui.png">
-        <img src="Trui.png" alt="Karel Trui">
+        <img src="Trui.png" alt="Karel Trui" />
         <h2>Karel Trui</h2>
         <p class="price">€29,99</p>
         <button class="add-to-cart">Toevoegen</button>
       </div>
 
       <div class="product" data-name="Karel T-shirt" data-price="19.99" data-img="Tshirt.png">
-        <img src="Tshirt.png" alt="Karel T-shirt">
+        <img src="Tshirt.png" alt="Karel T-shirt" />
         <h2>Karel T-shirt</h2>
         <p class="price">€19,99</p>
         <button class="add-to-cart">Toevoegen</button>
@@ -112,17 +112,51 @@
     <aside id="cart">
       <h2>Winkelmand</h2>
       <ul id="cart-items"></ul>
-      <p>Totaal: <span id="cart-total">€0.00</span></p>
-      <button id="checkout">Afrekenen</button>
+      <p class="cart-total">Totaal: <span id="cart-total">€0,00</span></p>
+      <button id="checkout" class="primary">Afrekenen</button>
     </aside>
   </main>
 
   <!-- Quick View Overlay -->
-  <div id="quick-view" class="hidden">
+  <div id="quick-view" class="overlay">
     <div id="quick-view-content">
-      <span id="close-quick-view">&times;</span>
-      <img id="quick-view-img" src="" alt="Product preview">
+      <button id="close-quick-view" aria-label="Sluiten">&times;</button>
+      <img id="quick-view-img" src="" alt="Product preview" />
     </div>
   </div>
+
+  <!-- Adres Modal -->
+  <div id="address-modal" class="overlay">
+    <div class="modal">
+      <h3>Bezorgadres</h3>
+      <form id="address-form">
+        <label>
+          Naam
+          <input type="text" id="name" required />
+        </label>
+        <label>
+          Adres
+          <input type="text" id="street" required />
+        </label>
+        <label class="grid-2">
+          <span>
+            Postcode
+            <input type="text" id="postcode" placeholder="1234 AB" required />
+          </span>
+          <span>
+            Woonplaats
+            <input type="text" id="city" required />
+          </span>
+        </label>
+        <div class="modal-actions">
+          <button type="button" id="cancel-address" class="ghost">Annuleren</button>
+          <button type="submit" class="primary">Bestellen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast"></div>
 </body>
 </html>
