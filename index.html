@@ -2,6 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Karel Shop</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
@@ -12,38 +13,46 @@
     <p>Officiële Karel de Kikker shop</p>
   </header>
 
-  <!-- Producten sectie -->
-  <section id="products">
-    <!-- Voorbeeld product -->
-    <div class="product" data-name="Joggingbroek" data-price="24.99" data-img="Joggingbroek.png">
-      <img src="Joggingbroek.png" alt="Joggingbroek">
-      <h2>Joggingbroek</h2>
-      <p>€24,99</p>
-      <button class="add-to-cart">Toevoegen</button>
-    </div>
+  <main>
+    <!-- Producten -->
+    <section id="products">
+      <!-- Voorbeeldproduct -->
+      <div class="product" data-name="Joggingbroek" data-price="24.99" data-img="Joggingbroek.png">
+        <div class="product-img-wrapper">
+          <img src="Joggingbroek.png" alt="Joggingbroek">
+        </div>
+        <h2>Joggingbroek</h2>
+        <p class="price">€24,99</p>
+        <button class="add-to-cart">Toevoegen</button>
+      </div>
 
-    <div class="product" data-name="Karel T-shirt" data-price="19.99" data-img="Tshirt.png">
-      <img src="Tshirt.png" alt="Karel T-shirt">
-      <h2>Karel T-shirt</h2>
-      <p>€19,99</p>
-      <button class="add-to-cart">Toevoegen</button>
-    </div>
+      <div class="product" data-name="Karel T-shirt" data-price="19.99" data-img="Tshirt.png">
+        <div class="product-img-wrapper">
+          <img src="Tshirt.png" alt="Karel T-shirt">
+        </div>
+        <h2>Karel T-shirt</h2>
+        <p class="price">€19,99</p>
+        <button class="add-to-cart">Toevoegen</button>
+      </div>
 
-    <!-- Voeg hier makkelijk nieuwe producten toe door dit blok te kopiëren -->
-  </section>
+      <!-- Nieuw product? Kopieer dit blok en vul data-name, data-price en data-img in -->
+    </section>
 
-  <!-- Winkelmand -->
-  <section id="cart">
-    <h2>Winkelmand</h2>
-    <ul id="cart-items"></ul>
-    <p>Totaal: €<span id="cart-total">0.00</span></p>
-    <button id="checkout">Afrekenen</button>
-  </section>
+    <!-- Winkelmand -->
+    <aside id="cart">
+      <h2>Winkelmand</h2>
+      <ul id="cart-items"></ul>
+      <p>Totaal: <span id="cart-total">€0.00</span></p>
+      <button id="checkout">Afrekenen</button>
+    </aside>
+  </main>
 
-  <!-- Quick View -->
+  <!-- Quick View Overlay -->
   <div id="quick-view" class="hidden">
-    <span id="close-quick-view">&times;</span>
-    <img id="quick-view-img" src="" alt="Product">
+    <div id="quick-view-content">
+      <span id="close-quick-view">&times;</span>
+      <img id="quick-view-img" src="" alt="Product preview">
+    </div>
   </div>
 </body>
 </html>
