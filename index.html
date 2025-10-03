@@ -18,44 +18,74 @@
   </header>
 
   <main>
-    <section id="products">
-      <h2>🛍️ Producten</h2>
-      <div class="product" data-name="Karel T-shirt" data-price="19.99">
-        <img src="Tshirt.png" alt="Karel T-shirt">
-        <h3>Karel T-shirt</h3>
-        <button class="add-to-cart">Toevoegen</button>
-        <button class="add-to-favorite">❤️</button>
-      </div>
-      <!-- Voeg meer producten toe zoals hierboven -->
-    </section>
-
-    <aside id="cart">
-      <h2>🛒 Winkelmandje</h2>
-      <ul id="cart-items"></ul>
-      <p class="cart-total">Totaal: <span id="cart-total">€0,00</span></p>
-      <button id="checkout">Afrekenen</button>
-    </aside>
-
-    <aside id="favorites">
-      <h2>⭐️ Favorieten</h2>
-      <ul id="favorite-items"></ul>
-    </aside>
-
-    <div id="address-modal" class="overlay">
-      <div class="modal">
-        <h3>Bezorgadres</h3>
-        <form id="address-form">
-          <label>Naam <input type="text" id="name" required /></label>
-          <label>Adres <input type="text" id="street" required /></label>
-          <label>Postcode <input type="text" id="postcode" required /></label>
-          <label>Woonplaats <input type="text" id="city" required /></label>
-          <div class="modal-actions">
-            <button type="button" id="cancel-address">Annuleren</button>
-            <button type="submit">Bestellen</button>
-          </div>
-        </form>
-      </div>
+  <section id="products">
+    <div class="product" data-name="Karel T-shirt" data-price="19.99">
+      <img src="Tshirt.png" alt="Karel T-shirt">
+      <h3>Karel T-shirt</h3>
+      <button class="add-to-cart">Toevoegen</button>
+      <button class="add-to-favorite">❤️</button>
     </div>
-  </main>
+
+    <div class="product" data-name="Karel Pet" data-price="14.99">
+      <img src="Pet.png" alt="Karel Pet">
+      <h3>Karel Pet</h3>
+      <button class="add-to-cart">Toevoegen</button>
+      <button class="add-to-favorite">❤️</button>
+    </div>
+
+    <div class="product" data-name="Karel Mok" data-price="9.99">
+      <img src="Mok.png" alt="Karel Mok">
+      <h3>Karel Mok</h3>
+      <button class="add-to-cart">Toevoegen</button>
+      <button class="add-to-favorite">❤️</button>
+    </div>
+
+    <div class="product" data-name="Karel Sticker" data-price="2.99">
+      <img src="Sticker.png" alt="Karel Sticker">
+      <h3>Karel Sticker</h3>
+      <button class="add-to-cart">Toevoegen</button>
+      <button class="add-to-favorite">❤️</button>
+    </div>
+
+    <div class="product" data-name="Karel Sleutelhanger" data-price="4.99">
+      <img src="Sleutelhanger.png" alt="Karel Sleutelhanger">
+      <h3>Karel Sleutelhanger</h3>
+      <button class="add-to-cart">Toevoegen</button>
+      <button class="add-to-favorite">❤️</button>
+    </div>
+
+    <div class="product" data-name="Karel Hoodie" data-price="39.99">
+      <img src="Hoodie.png" alt="Karel Hoodie">
+      <h3>Karel Hoodie</h3>
+      <button class="add-to-cart">Toevoegen</button>
+      <button class="add-to-favorite">❤️</button>
+    </div>
+  </section>
+
+  <aside id="cart">
+    <ul id="cart-items"></ul>
+    <p class="cart-total">Totaal: <span id="cart-total">€0,00</span></p>
+    <button id="checkout">Afrekenen</button>
+  </aside>
+
+  <aside id="favorites">
+    <ul id="favorite-items"></ul>
+  </aside>
+
+  <div id="address-modal" class="overlay">
+    <div class="modal">
+      <form id="address-form">
+        <label>Naam <input type="text" id="name" required /></label>
+        <label>Adres <input type="text" id="street" required /></label>
+        <label>Postcode <input type="text" id="postcode" required /></label>
+        <label>Woonplaats <input type="text" id="city" required /></label>
+        <div class="modal-actions">
+          <button type="button" id="cancel-address">Annuleren</button>
+          <button type="submit">Bestellen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
 </body>
 </html>
