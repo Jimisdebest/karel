@@ -15,32 +15,47 @@
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 15px;
     }
-    .gallery button {
-      border: none;
-      padding: 0;
-      background: none;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .gallery button:hover {
-      transform: scale(1.05) rotate(-1deg);
-      box-shadow: 0 8px 16px rgba(0, 128, 0, 0.3);
-    }
     .gallery img {
       width: 100%;
       height: auto;
-      display: block;
       border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 8px 16px rgba(0, 128, 0, 0.3);
+    }
+    #fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #fullscreen img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.5);
     }
   </style>
 </head>
 <body>
   <div class="gallery" id="gallery"></div>
+  <div id="fullscreen" onclick="this.style.display='none'">
+    <img id="fullscreenImg" src="">
+  </div>
 
   <script>
     const gallery = document.getElementById("gallery");
+    const fullscreen = document.getElementById("fullscreen");
+    const fullscreenImg = document.getElementById("fullscreenImg");
 
     for (let i = 1; i <= 1000; i++) {
       const img = new Image();
@@ -48,12 +63,11 @@
 
       img.onload = () => {
         loaded = true;
-        const button = document.createElement("button");
-        button.appendChild(img);
-        button.onclick = () => {
-          alert(`Je klikte op afbeelding ${i}.png`);
+        img.onclick = () => {
+          fullscreenImg.src = img.src;
+          fullscreen.style.display = "flex";
         };
-        gallery.appendChild(button);
+        gallery.appendChild(img);
       };
 
       img.onerror = () => {};
