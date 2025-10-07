@@ -10,228 +10,62 @@
       margin: 0;
       padding: 20px;
     }
-
-    h1 {
-      text-align: center;
-    }
-
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
       gap: 15px;
-      margin-bottom: 30px;
     }
-
-    .gallery-item {
-      background: white;
-      padding: 10px;
+    .gallery button {
+      border: none;
+      padding: 0;
+      background: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       border-radius: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      text-align: center;
-      position: relative;
+      overflow: hidden;
     }
-
-    .gallery-item img {
+    .gallery button:hover {
+      transform: scale(1.05) rotate(-1deg);
+      box-shadow: 0 8px 16px rgba(0, 128, 0, 0.3);
+    }
+    .gallery img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .price {
-      margin-top: 8px;
-      font-weight: bold;
-    }
-
-    .add-btn, .remove-btn {
-      margin-top: 10px;
-      padding: 6px 12px;
-      font-size: 14px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .add-btn {
-      background-color: #28a745;
-      color: white;
-    }
-
-    .remove-btn {
-      background-color: red;
-      color: white;
-      display: none;
-    }
-
-    .gallery-item.in-cart .remove-btn {
-      display: inline-block;
-    }
-
-    #cart {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    #checkoutForm {
-      display: none;
-      max-width: 400px;
-      margin: 0 auto;
-      background: white;
-      padding: 20px;
+      display: block;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    #checkoutForm input {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    #checkoutForm button {
-      background-color: #d5007f;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #fullscreen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0,0,0,0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    #fullscreen img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255,255,255,0.5);
     }
   </style>
 </head>
 <body>
-
-  <h1>KarelGalerij</h1>
-
-  <div id="cart">
-    <p><strong>Winkelmandje:</strong> <span id="cartCount">0</span> producten | Totaal: €<span id="cartTotal">0</span></p>
-    <button onclick="showCheckout()">Afrekenen</button>
-  </div>
-
   <div class="gallery" id="gallery"></div>
 
-  <div id="checkoutForm">
-    <h2>Gegevens invoeren</h2>
-    <input type="text" id="naam" placeholder="Naam">
-    <input type="text" id="adres" placeholder="Adres">
-    <input type="email" id="email" placeholder="E-mail">
-    <button onclick="startBetaling()">Betalen</button>
-  </div>
-
-  <div id="fullscreen" onclick="this.style.display='none'">
-    <img id="fullscreenImg" src="">
-  </div>
-
   <script>
-    let cartCount = 0;
-    const cartCountEl = document.getElementById("cartCount");
-    const cartTotalEl = document.getElementById("cartTotal");
-
     const gallery = document.getElementById("gallery");
 
-    for (let i = 1; i <= 10; i++) {
-      const item = document.createElement("div");
-      item.className = "gallery-item";
-
+    for (let i = 1; i <= 1000; i++) {
       const img = new Image();
+      let loaded = false;
+
+      img.onload = () => {
+        loaded = true;
+        const button = document.createElement("button");
+        button.appendChild(img);
+        button.onclick = () => {
+          alert(`Je klikte op afbeelding ${i}.png`);
+        };
+        gallery.appendChild(button);
+      };
+
+      img.onerror = () => {};
+
       img.src = `${i}.png`;
-      img.alt = `Product ${i}`;
-      img.onclick = () => {
-        document.getElementById("fullscreenImg").src = img.src;
-        document.getElementById("fullscreen").style.display = "flex";
-      };
-
-      const price = document.createElement("div");
-      price.className = "price";
-      price.textContent = "€10";
-
-      const addBtn = document.createElement("button");
-      addBtn.className = "add-btn";
-      addBtn.textContent = "Toevoegen aan winkelmandje";
-      addBtn.onclick = (e) => {
-        e.stopPropagation();
-        if (!item.classList.contains("in-cart")) {
-          item.classList.add("in-cart");
-          cartCount++;
-          cartCountEl.textContent = cartCount;
-          cartTotalEl.textContent = cartCount * 10;
-        }
-      };
-
-      const removeBtn = document.createElement("button");
-      removeBtn.className = "remove-btn";
-      removeBtn.textContent = "Verwijderen";
-      removeBtn.onclick = (e) => {
-        e.stopPropagation();
-        if (item.classList.contains("in-cart")) {
-          item.classList.remove("in-cart");
-          cartCount--;
-          cartCountEl.textContent = cartCount;
-          cartTotalEl.textContent = cartCount * 10;
-        }
-      };
-
-      item.appendChild(img);
-      item.appendChild(price);
-      item.appendChild(addBtn);
-      item.appendChild(removeBtn);
-
-      gallery.appendChild(item);
-    }
-
-    function showCheckout() {
-      if (cartCount === 0) {
-        alert("Je winkelmandje is leeg.");
-        return;
-      }
-      document.getElementById("checkoutForm").style.display = "block";
-    }
-
-    function startBetaling() {
-      const naam = document.getElementById("naam").value;
-      const adres = document.getElementById("adres").value;
-      const email = document.getElementById("email").value;
-
-      if (!naam || !adres || !email) {
-        alert("Vul alle gegevens in.");
-        return;
-      }
-
-      document.getElementById("checkoutForm").style.display = "none";
-
-      const fullscreen = document.getElementById("fullscreen");
-      const fullscreenImg = document.getElementById("fullscreenImg");
-
-      fullscreenImg.src = "Betalen.png";
-      fullscreen.style.display = "flex";
 
       setTimeout(() => {
-        fullscreenImg.src = "Betaald.png";
+        if (!loaded) {
+          img.src = "";
+        }
       }, 5000);
     }
   </script>
-
 </body>
 </html>
