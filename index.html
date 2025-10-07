@@ -14,67 +14,70 @@
       color: #2e8b57;
       font-size: 3em;
     }
-    #karelImage {
-      width: 400px;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 2em;
+    }
+    .item {
+      border: 5px dotted #2e8b57;
+      border-radius: 10px;
+      padding: 10px;
+      background-color: #fff;
+    }
+    .item img {
+      width: 100%;
       height: auto;
-      border: 10px dotted #2e8b57;
-      border-radius: 20px;
-      margin-top: 1em;
-      display: none;
+      border-radius: 5px;
     }
     .caption {
-      font-size: 1.5em;
       margin-top: 0.5em;
+      font-size: 1em;
       color: #4b8b3b;
     }
   </style>
 </head>
 <body>
   <h1>🟢 KarelGalerij</h1>
-  <img id="karelImage" alt="KarelProduct">
-  <div class="caption" id="caption"></div>
+  <div class="gallery" id="gallery"></div>
 
   <script>
+    const gallery = document.getElementById("gallery");
     const captions = [
       "KarelKast", "KarelHanger", "KarelAuto", "KarelBottle", "KarelSlof", "KarelLaptop",
       "KarelBroek", "KarelToeter", "KarelDrone", "KarelPizza", "KarelTosti", "KarelTent",
       "KarelKussen", "KarelZonnebril", "KarelFiets", "KarelSok", "KarelBanaan", "KarelBoek"
     ];
 
-    let index = 1;
-    const image = document.getElementById("karelImage");
-    const caption = document.getElementById("caption");
-
-    function loadImage(i) {
-      const tempImg = new Image();
+    for (let i = 1; i <= 1000; i++) {
+      const img = new Image();
       let loaded = false;
 
-      tempImg.onload = () => {
+      img.onload = () => {
         loaded = true;
-        image.src = tempImg.src;
-        image.style.display = "block";
+        const item = document.createElement("div");
+        item.className = "item";
+        item.appendChild(img);
+
+        const caption = document.createElement("div");
+        caption.className = "caption";
         caption.textContent = captions[i % captions.length];
+        item.appendChild(caption);
+
+        gallery.appendChild(item);
       };
 
-      tempImg.onerror = () => {
-        image.style.display = "none";
-        caption.textContent = "";
-      };
+      img.onerror = () => {}; // geen actie nodig
 
-      tempImg.src = `${i}.png`;
+      img.src = `${i}.png`;
 
       setTimeout(() => {
         if (!loaded) {
-          image.style.display = "none";
-          caption.textContent = "";
+          img.src = ""; // stop poging
         }
       }, 5000); // 5 seconden timeout
     }
-
-    setInterval(() => {
-      index = (index % 1000) + 1;
-      loadImage(index);
-    }, 1); // elke milliseconde
   </script>
 </body>
 </html>
