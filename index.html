@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>KarelGalerij</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #d0f0c0;
+      text-align: center;
+      padding: 2em;
+    }
+    h1 {
+      color: #2e8b57;
+      font-size: 3em;
+    }
+    #karelImage {
+      width: 400px;
+      height: auto;
+      border: 10px dotted #2e8b57;
+      border-radius: 20px;
+      margin-top: 1em;
+      display: none;
+    }
+    .caption {
+      font-size: 1.5em;
+      margin-top: 0.5em;
+      color: #4b8b3b;
+    }
+  </style>
+</head>
+<body>
+  <h1>🟢 KarelGalerij</h1>
+  <img id="karelImage" alt="KarelProduct">
+  <div class="caption" id="caption"></div>
+
+  <script>
+    const captions = [
+      "KarelKast", "KarelHanger", "KarelAuto", "KarelBottle", "KarelSlof", "KarelLaptop",
+      "KarelBroek", "KarelToeter", "KarelDrone", "KarelPizza", "KarelTosti", "KarelTent",
+      "KarelKussen", "KarelZonnebril", "KarelFiets", "KarelSok", "KarelBanaan", "KarelBoek"
+    ];
+
+    let index = 1;
+    const image = document.getElementById("karelImage");
+    const caption = document.getElementById("caption");
+
+    function loadImage(i) {
+      const tempImg = new Image();
+      let loaded = false;
+
+      tempImg.onload = () => {
+        loaded = true;
+        image.src = tempImg.src;
+        image.style.display = "block";
+        caption.textContent = captions[i % captions.length];
+      };
+
+      tempImg.onerror = () => {
+        image.style.display = "none";
+        caption.textContent = "";
+      };
+
+      tempImg.src = `${i}.png`;
+
+      setTimeout(() => {
+        if (!loaded) {
+          image.style.display = "none";
+          caption.textContent = "";
+        }
+      }, 5000); // 5 seconden timeout
+    }
+
+    setInterval(() => {
+      index = (index % 1000) + 1;
+      loadImage(index);
+    }, 1); // elke milliseconde
+  </script>
+</body>
+</html>
